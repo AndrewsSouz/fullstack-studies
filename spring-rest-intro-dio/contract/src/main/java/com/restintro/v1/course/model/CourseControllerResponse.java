@@ -1,5 +1,6 @@
 package com.restintro.v1.course.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +20,8 @@ public class CourseControllerResponse {
     private String code;
     private Long duration;
     private Double rating;
-    private String releaseDate;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date releaseDate;
     private byte[] imageBlob;
     private String description;
 }

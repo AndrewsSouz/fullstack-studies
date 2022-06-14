@@ -38,6 +38,9 @@ import {SafeImagePipe} from "./pipe/safe-image.pipe";
         path: "courses/info/:id", component: CourseInfoComponent
       },
       {
+        path: "courses/info", component: CourseInfoComponent
+      },
+      {
         path: "", redirectTo: "courses", pathMatch: "full"
       },
       {

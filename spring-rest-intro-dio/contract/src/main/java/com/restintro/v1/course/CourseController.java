@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,8 +28,13 @@ public class CourseController {
         return courseFacade.findById(id);
     }
 
+    @PostMapping
+    public CourseControllerResponse save(@RequestBody @Valid CourseControllerDto courseControllerDto) {
+        return courseFacade.save(courseControllerDto);
+    }
+
     @PatchMapping
-    public CourseControllerResponse update(@RequestBody CourseControllerDto course) {
+    public CourseControllerResponse update(@RequestBody @Valid CourseControllerDto course) {
         return courseFacade.update(course);
     }
 
@@ -36,6 +42,11 @@ public class CourseController {
     public void updateImage(@PathVariable("id") Long id,
                             @RequestParam("image") MultipartFile imageData) {
         courseFacade.updateImage(id, imageData);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        courseFacade.delete(id);
     }
 
 

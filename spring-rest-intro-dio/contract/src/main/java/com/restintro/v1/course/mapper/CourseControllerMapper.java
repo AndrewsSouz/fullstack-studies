@@ -4,8 +4,6 @@ import com.restintro.entity.Course;
 import com.restintro.v1.course.model.CourseControllerDto;
 import com.restintro.v1.course.model.CourseControllerResponse;
 
-import java.util.Date;
-import java.util.Objects;
 import java.util.Optional;
 
 public class CourseControllerMapper {
@@ -33,11 +31,9 @@ public class CourseControllerMapper {
                         .price(course.getPrice())
                         .rating(course.getRating())
                         .imageBlob(course.getImage())
-                        .releaseDate(
-                                Optional.ofNullable(course.getRelease())
-                                        .map(Object::toString)
-                                        .orElse(""))
+                        .releaseDate(course.getRelease())
                         .build())
                 .orElse(CourseControllerResponse.builder().build());
     }
+
 }

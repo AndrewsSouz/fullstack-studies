@@ -27,6 +27,10 @@ public class CourseControllerFacade {
         return CourseControllerMapper.mapToCourseResponse(courseService.findById(id));
     }
 
+    public CourseControllerResponse save(CourseControllerDto courseControllerDto) {
+        return CourseControllerMapper.mapToCourseResponse(
+                courseService.save(CourseControllerMapper.mapToCourse(courseControllerDto)));
+    }
     public CourseControllerResponse update(CourseControllerDto courseControllerDto) {
         return CourseControllerMapper.mapToCourseResponse(
                 courseService.update(CourseControllerMapper.mapToCourse(courseControllerDto)));
@@ -36,4 +40,7 @@ public class CourseControllerFacade {
         courseService.updateImage(id, image);
     }
 
+    public void delete(Long id) {
+        courseService.delete(id);
+    }
 }

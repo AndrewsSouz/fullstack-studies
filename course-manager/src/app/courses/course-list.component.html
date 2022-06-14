@@ -1,5 +1,7 @@
 <h2>Course List</h2>
 
+<br>
+
 <div class="form-group row">
 
   <label class="col-sm-2 col-form-label">Search:</label>
@@ -11,6 +13,7 @@
 </div>
 
 <br>
+
 <table class="table table-striped">
 
   <thead>
@@ -34,9 +37,18 @@
       <app-star [rating]="course.rating"></app-star>
     </td>
     <td>
-      <a [routerLink]="['/courses/info', course.id]" class="btn btn-primary">Edit Course</a>
+      <a [routerLink]="['/courses/info', course.id]" class="btn btn-primary me-2">Edit Course</a>
+      <button (click)="deleteCourse(course.id)" class="btn btn-danger" >Delete</button>
     </td>
   </tr>
   </tbody>
 
 </table>
+
+<br>
+
+  <div class="row">
+    <div class="col-md-6">
+      <a [routerLink]="['/courses/info']" class="btn btn-primary">Add Course</a>
+    </div>
+  </div>

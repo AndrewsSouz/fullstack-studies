@@ -38,15 +38,28 @@ export class CourseService {
     );
   }
 
-  public save(course: CourseModel) {
+  public saveOrUpdate(course: CourseModel):Observable<CourseModel> {
+    if (course.id) {
+      return this.update(course);
+    } else {
+      return this.save(course);
+    }
+  }
+
+  public save(course: CourseModel):Observable<CourseModel> {
     console.log("save() service");
-    this.httpClient.patch<CourseModel>(
+    return this.httpClient.post<CourseModel>(
       `${this.host}${this.path}`,
       course
-    ).subscribe({
-      next: course => console.log(`Course id ${course.id}, updated`),
-      error: err => console.log(err)
-    })
+    )
+  }
+
+  public update(course: CourseModel):Observable<CourseModel> {
+    console.log("update() service");
+    return this.httpClient.patch<CourseModel>(
+      `${this.host}${this.path}`,
+      course
+    )
   }
 
   public updateImage(id: number, image: File) {
@@ -65,6 +78,13 @@ export class CourseService {
       next: () => console.log('Image updated'),
       error: err => console.log(err)
     })
+  }
+
+  public delete(id: number):Observable<any> {
+    console.log("delete() service");
+    return this.httpClient.delete(
+      `${this.host}${this.path}/${id}`
+    );
   }
 
 }

@@ -11,6 +11,7 @@ export class CourseInfoComponent implements OnInit {
   course!: CourseModel;
   courseImage!: File;
   filename?: string;
+  saved: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute,
               private courseService: CourseService) { }
@@ -24,11 +25,17 @@ export class CourseInfoComponent implements OnInit {
   }
 
   save(): void {
-    this.courseService.save(this.course);
-    if (this.courseImage) {
-      this.filename = this.courseImage.name;
-      this.courseService.updateImage(this.course.id,this.courseImage);
-    }
+    this.courseService.saveOrUpdate(this.course).subscribe({
+      next: course => {
+        console.log(`saveOrUpdate for id ${course.id}, OK`);
+        this.saved = true;
+        if (this.courseImage) {
+          this.filename = this.courseImage.name;
+          this.courseService.updateImage(course.id, this.courseImage);
+        }
+      },
+      error: err => console.log(err)
+    });
   }
 
   onFileSelected(event: any) {
