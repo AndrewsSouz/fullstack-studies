@@ -1,0 +1,4 @@
+rootProject.name = 'spring-rest-intro-dio'
+include 'contract'
+include 'impl'
+

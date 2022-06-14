@@ -1,0 +1,10 @@
+dependencies {
+    implementation project(":impl")
+}
+
+bootJar {
+    enabled = false
+}
+jar {
+    enabled = true
+}
