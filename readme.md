@@ -1,4 +1,6 @@
 # Sample front and backend project for study.
+<br>
+
 ## Angular course manager project.
   In this project there are some basic features of Angular. 
   You can try it out and see how it works.
@@ -34,10 +36,14 @@
 
    ### Angular Material
    Angular Material is a framework for building user interfaces.
-            
-   ## Spring Framework backend
+
+<br>
+
+## Spring Framework backend
+<br>
+
    ### Spring boot and Spring MVC
-   - Spring boot is a Java-based framework for building web applications.
+   Spring boot is a Java-based framework for building web applications.
 
    - There are some endpoints for basic CRUD operations:
      - `/v1/courses: GET, POST, PATCH`
