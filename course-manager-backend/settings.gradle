@@ -1,0 +1,4 @@
+rootProject.name = 'course-manager-backend'
+include 'contract'
+include 'impl'
+
